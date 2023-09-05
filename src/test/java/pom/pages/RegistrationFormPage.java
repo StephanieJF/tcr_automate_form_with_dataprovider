@@ -84,7 +84,7 @@ public class RegistrationFormPage extends BaseTest {
     }
 
     public void clickGiveConsent(String giveConsent){
-        if(giveConsent.equals("Yes") ){
+        if(giveConsent == "Yes" ){
             driver.findElement(consentCheckBx).click();
         }
     }
