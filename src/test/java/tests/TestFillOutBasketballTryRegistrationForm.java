@@ -46,7 +46,9 @@ public class TestFillOutBasketballTryRegistrationForm extends BaseTest {
                 selectPositionsTryingOutFor(positionsTryingOutFor).
                 enterParentsFirstName(parentsFirstName).
                 enterParentsLastName(parentsLastName).
-                enterParentsEmailAddress(parentsEmailAddress).enterParentsPhoneNumber(parentsPhoneNumber).clickGiveConsent(giveConsent);
+                enterParentsEmailAddress(parentsEmailAddress).
+                enterParentsPhoneNumber(parentsPhoneNumber).
+                clickGiveConsent(giveConsent);
         // run the test
     }
 
