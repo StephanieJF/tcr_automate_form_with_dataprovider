@@ -1,41 +1,20 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
+import pom.BaseTest;
+import pom.pages.RegistrationFormPage;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TestFillOutBasketballTryRegistrationForm {
-    // set up the driver including the webdriver manager
-    WebDriver driver;
-    String BASKETBALL_TRYOUTS_REGISTRATION_FORM = "https://www.techcoachingwithralph.com/basketball-tryouts-registration-form/";
+public class TestFillOutBasketballTryRegistrationForm extends BaseTest {
 
-    @BeforeClass
-    static public void setupWebDriverManager() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeMethod
-    void setupTest() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
-
-    @AfterMethod
-    void cleanUp() {
-        driver.quit();
-    }
-
-    @Test(dataProvider = "basketball_tryouts_registration_from_csv_file")
+    @Test(dataProvider = "basketball_tryouts_registration")
     void testFillOutBasketballTryoutsForm(
             String firstName,
             String lastName,
@@ -50,40 +29,24 @@ public class TestFillOutBasketballTryRegistrationForm {
             String parentsPhoneNumber,
             String giveConsent
     ) {
-        // go to the form in the browser
-        driver.get(BASKETBALL_TRYOUTS_REGISTRATION_FORM);
+
+        RegistrationFormPage registrationFormPage = new RegistrationFormPage(driver);
+
+        registrationFormPage.goTo();
 
         // automate the form
-        // first name
         System.out.println("First Name: " + firstName);
-        driver.findElement(By.cssSelector("input[name='wpforms[fields][0][first]']")).sendKeys(firstName);
-        // last name
         System.out.println("Last Name: " + lastName);
-        driver.findElement(By.cssSelector("input[name='wpforms[fields][0][last]']")).sendKeys(lastName);
-        // date of birth
-        driver.findElement(By.cssSelector("input[name='wpforms[fields][17]']")).sendKeys(dateOfBirth);
-        // grade level
-        driver.findElement(By.cssSelector("input[name='wpforms[fields][4]']")).sendKeys(playerGradeLevel);
-        // number of seasons played
-        driver.findElement(By.cssSelector("input[name='wpforms[fields][5]']")).sendKeys(numberOfSeasonsPlayed);
-        // positions played (checkboxes)
-        driver.findElement(By.cssSelector("input[name='wpforms[fields][7][]'][value='"+ positionsPlayed + "']")).click();
-        // positions trying out form (checkboxes)
-        driver.findElement(By.cssSelector("input[name='wpforms[fields][16][]'][value='"+ positionsTryingOutFor + "']")).click();
-        // parent first name
-        driver.findElement(By.cssSelector("input[name='wpforms[fields][12][first]']")).sendKeys(parentsFirstName);
-        // parent last name
-        driver.findElement(By.cssSelector("input[name='wpforms[fields][12][last]']")).sendKeys(parentsLastName);
-        // parent email address
-        driver.findElement(By.cssSelector("input[name='wpforms[fields][1]']")).sendKeys(parentsEmailAddress);
-        // parent phone number
-        driver.findElement(By.cssSelector("input[name='wpforms[fields][18]']")).sendKeys(parentsPhoneNumber);
-        // permission checkbox
-        if (giveConsent == "Yes") {
-            driver.findElement(By.cssSelector("input[name='wpforms[fields][15][]']")).click();
-        }
-
-
+        registrationFormPage.enterFirstName(firstName).
+                enterLastName(lastName).
+                enterDateOfBirth(dateOfBirth).
+                enterPlayerGradeLevel(playerGradeLevel).
+                enterNumSeasonsPlayed(numberOfSeasonsPlayed).
+                selectPositionsPlayed(positionsPlayed).
+                selectPositionsTryingOutFor(positionsTryingOutFor).
+                enterParentsFirstName(parentsFirstName).
+                enterParentsLastName(parentsLastName).
+                enterParentsEmailAddress(parentsEmailAddress).enterParentsPhoneNumber(parentsPhoneNumber).clickGiveConsent(giveConsent);
         // run the test
     }
 
