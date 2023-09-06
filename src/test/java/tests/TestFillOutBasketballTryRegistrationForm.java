@@ -1,8 +1,7 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.*;
-import pom.BaseTest;
+import base.BaseTest;
 import pom.pages.RegistrationFormPage;
 
 import java.io.BufferedReader;
@@ -30,9 +29,7 @@ public class TestFillOutBasketballTryRegistrationForm extends BaseTest {
             String giveConsent
     ) {
 
-        RegistrationFormPage registrationFormPage = new RegistrationFormPage(driver);
-
-        registrationFormPage.goTo();
+        RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
         // automate the form
         System.out.println("First Name: " + firstName);

@@ -1,13 +1,10 @@
 package pom.pages;
 
+import base.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import pom.BaseTest;
 
-import java.util.Objects;
 
-public class RegistrationFormPage extends BaseTest {
-    WebDriver driver;
+public class RegistrationFormPage extends BasePage {
 
     private final By firstNameFld = By.cssSelector("input[name='wpforms[fields][0][first]']");
     private final By lastNameFld = By.cssSelector("input[name='wpforms[fields][0][last]']");
@@ -20,13 +17,13 @@ public class RegistrationFormPage extends BaseTest {
     private final By parentsPhoneNumberFld = By.cssSelector("input[name='wpforms[fields][18]']");
     private final By consentCheckBx = By.cssSelector("input[name='wpforms[fields][15][]']");
 
-    public RegistrationFormPage(WebDriver driver){
-        this.driver = driver;
-    }
+//    public RegistrationFormPage(WebDriver driver){
+//        this.driver = driver;
+//    }
 
-    public void goTo(){
-        driver.get("https://www.techcoachingwithralph.com/basketball-tryouts-registration-form/");
-    }
+//    public void goTo(){
+//        driver.get("https://www.techcoachingwithralph.com/basketball-tryouts-registration-form/");
+//    }
 
     public RegistrationFormPage enterFirstName(String firstName) {
        driver.findElement(firstNameFld).sendKeys(firstName);
