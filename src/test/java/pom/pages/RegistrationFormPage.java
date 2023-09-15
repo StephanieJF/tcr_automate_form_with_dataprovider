@@ -2,6 +2,7 @@ package pom.pages;
 
 import base.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 
 public class RegistrationFormPage extends BasePage {
@@ -17,13 +18,9 @@ public class RegistrationFormPage extends BasePage {
     private final By parentsPhoneNumberFld = By.cssSelector("input[name='wpforms[fields][18]']");
     private final By consentCheckBx = By.cssSelector("input[name='wpforms[fields][15][]']");
 
-//    public RegistrationFormPage(WebDriver driver){
-//        this.driver = driver;
-//    }
-
-//    public void goTo(){
-//        driver.get("https://www.techcoachingwithralph.com/basketball-tryouts-registration-form/");
-//    }
+    public RegistrationFormPage(WebDriver driver) {
+        super(driver);
+    }
 
     public RegistrationFormPage enterFirstName(String firstName) {
        driver.findElement(firstNameFld).sendKeys(firstName);
@@ -75,9 +72,19 @@ public class RegistrationFormPage extends BasePage {
         return this;
     }
 
-    public RegistrationFormPage enterParentsPhoneNumber(String parentsPhoneNumber){
+    public void enterParentsPhoneNumber(String parentsPhoneNumber){
         driver.findElement(parentsPhoneNumberFld).sendKeys(parentsPhoneNumber);
-        return this;
+    }
+
+    public void fillOutFormFields(
+           String firstName, String lastName, String dateOfBirth,
+           String playerGradeLevel, String numberOfSeasonsPlayed, String positionsPlayed, String positionsTryingOutFor,
+           String parentsFirstName, String parentsLastName, String parentsEmailAddress, String parentsPhoneNumber
+           ){
+        enterFirstName(firstName).enterLastName(lastName).enterDateOfBirth(dateOfBirth).enterPlayerGradeLevel(playerGradeLevel).
+        enterNumSeasonsPlayed(numberOfSeasonsPlayed).selectPositionsPlayed(positionsPlayed).selectPositionsTryingOutFor(positionsTryingOutFor).
+        enterParentsFirstName(parentsFirstName).enterParentsLastName(parentsLastName).enterParentsEmailAddress(parentsEmailAddress).
+        enterParentsPhoneNumber(parentsPhoneNumber);
     }
 
     public void clickGiveConsent(String giveConsent){

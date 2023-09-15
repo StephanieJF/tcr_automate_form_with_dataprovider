@@ -14,7 +14,7 @@ import java.util.List;
 public class TestFillOutBasketballTryRegistrationForm extends BaseTest {
 
     @Test(dataProvider = "basketball_tryouts_registration")
-    void testFillOutBasketballTryoutsForm(
+    public void testFillOutBasketballTryoutsForm(
             String firstName,
             String lastName,
             String dateOfBirth,
@@ -29,29 +29,14 @@ public class TestFillOutBasketballTryRegistrationForm extends BaseTest {
             String giveConsent
     ) {
 
-        RegistrationFormPage registrationFormPage = new RegistrationFormPage();
-
-        // automate the form
-        System.out.println("First Name: " + firstName);
-        System.out.println("Last Name: " + lastName);
-        registrationFormPage.enterFirstName(firstName).
-                enterLastName(lastName).
-                enterDateOfBirth(dateOfBirth).
-                enterPlayerGradeLevel(playerGradeLevel).
-                enterNumSeasonsPlayed(numberOfSeasonsPlayed).
-                selectPositionsPlayed(positionsPlayed).
-                selectPositionsTryingOutFor(positionsTryingOutFor).
-                enterParentsFirstName(parentsFirstName).
-                enterParentsLastName(parentsLastName).
-                enterParentsEmailAddress(parentsEmailAddress).
-                enterParentsPhoneNumber(parentsPhoneNumber).
-                clickGiveConsent(giveConsent);
-        // run the test
+        RegistrationFormPage registrationFormPage = new RegistrationFormPage(driver);
+        registrationFormPage.fillOutFormFields(firstName, lastName, dateOfBirth, playerGradeLevel,
+                numberOfSeasonsPlayed, positionsPlayed, positionsTryingOutFor, parentsFirstName, parentsLastName,
+                parentsEmailAddress, parentsPhoneNumber);
+        registrationFormPage.clickGiveConsent(giveConsent);
     }
 
 
-
-    // first set it up with one test to see it run with the data provider
 
     @DataProvider(name = "basketball_tryouts_registration")
     public Object[][] load_test_data() {

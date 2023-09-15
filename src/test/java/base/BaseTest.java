@@ -4,30 +4,28 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+
+import java.util.Properties;
 
 public class BaseTest {
-    private static WebDriver driver;
-    protected static BasePage basePage;
-    private static final String baseURL = "https://www.techcoachingwithralph.com/basketball-tryouts-registration-form/";
-
-    @BeforeClass
-    public static void setupWebDriverManager() {
+    public WebDriver driver;
+    public Properties config = new Properties();
+    @BeforeSuite
+    void setupWebDriverManager() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeMethod
-    public static void setupTest() {
+    void setupTest() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get(baseURL);
-        basePage = new BasePage();
-        basePage.setDriver(driver);
+        driver.get(config.getProperty("baseURL"));
     }
 
     @AfterMethod
-    public static void cleanUp() {
+    void cleanUp() {
         driver.quit();
     }
 
