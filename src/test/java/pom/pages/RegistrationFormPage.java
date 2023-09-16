@@ -3,6 +3,7 @@ package pom.pages;
 import base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pom.dataObjects.PlayerInfo;
 
 
 public class RegistrationFormPage extends BasePage {
@@ -72,24 +73,24 @@ public class RegistrationFormPage extends BasePage {
         return this;
     }
 
-    public void enterParentsPhoneNumber(String parentsPhoneNumber){
+    public RegistrationFormPage enterParentsPhoneNumber(String parentsPhoneNumber){
         driver.findElement(parentsPhoneNumberFld).sendKeys(parentsPhoneNumber);
+        return this;
     }
 
-    public void fillOutFormFields(
-           String firstName, String lastName, String dateOfBirth,
-           String playerGradeLevel, String numberOfSeasonsPlayed, String positionsPlayed, String positionsTryingOutFor,
-           String parentsFirstName, String parentsLastName, String parentsEmailAddress, String parentsPhoneNumber
-           ){
-        enterFirstName(firstName).enterLastName(lastName).enterDateOfBirth(dateOfBirth).enterPlayerGradeLevel(playerGradeLevel).
-        enterNumSeasonsPlayed(numberOfSeasonsPlayed).selectPositionsPlayed(positionsPlayed).selectPositionsTryingOutFor(positionsTryingOutFor).
-        enterParentsFirstName(parentsFirstName).enterParentsLastName(parentsLastName).enterParentsEmailAddress(parentsEmailAddress).
-        enterParentsPhoneNumber(parentsPhoneNumber);
+    public void setPlayerInfo(PlayerInfo playerInfo){
+        enterFirstName(playerInfo.getFirstName()).enterLastName(playerInfo.getLastName()).enterDateOfBirth(playerInfo.getDateOfBirth()).
+                enterPlayerGradeLevel(playerInfo.getPlayerGradeLevel()).enterNumSeasonsPlayed(playerInfo.getNumberOfSeasonsPlayed()).
+                selectPositionsPlayed(playerInfo.getPositionsPlayed()).selectPositionsTryingOutFor(playerInfo.getPositionsTryingOutFor()).
+                enterParentsFirstName(playerInfo.getParentsFirstName()).enterParentsLastName(playerInfo.getParentsLastName()).
+                enterParentsEmailAddress(playerInfo.getParentsEmailAddress()).enterParentsPhoneNumber(playerInfo.getParentsPhoneNumber()).
+                clickGiveConsent(playerInfo.getConsentGiven());
     }
 
-    public void clickGiveConsent(String giveConsent){
+    public RegistrationFormPage clickGiveConsent(String giveConsent){
         if(giveConsent == "Yes" ){
             driver.findElement(consentCheckBx).click();
         }
+        return this;
     }
 }

@@ -1,0 +1,30 @@
+[
+  {
+"firstName" : "Cedric",
+"lastName" : "The Entertainer",
+"dateOfBirth" : "01/01/2009",
+"playerGradeLevel" : "8th",
+"numberOfSeasonsPlayed" : "3",
+"positionsPlayed" : "Point Guard",
+"positionsTryingOutFor" : "Small Forward",
+"parentsFirstName" : "Sue-Ellen",
+"parentsLastName" : "Smith",
+"parentsEmailAddress" : "sue-ellen.smith@gmail.com",
+"parentsPhoneNumber" : "305-777-6859",
+"consentGiven" : "Yes"
+},
+{
+"firstName" : "Steve",
+"lastName" : "Harvey",
+"dateOfBirth" : "03/11/2013",
+"playerGradeLevel" : "5th",
+"numberOfSeasonsPlayed" : "3",
+"positionsPlayed" : "Point Guard",
+"positionsTryingOutFor" : "Small Forward",
+"parentsFirstName" : "Sue-Ellen",
+"parentsLastName" : "Smith",
+"parentsEmailAddress" : "sue-ellen.smith@gmail.com",
+"parentsPhoneNumber" : "305-777-6859",
+"consentGiven" : "Yes"
+}
+  ]

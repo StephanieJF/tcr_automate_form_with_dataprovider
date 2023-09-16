@@ -1,9 +1,10 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.*;
 import base.BaseTest;
+import pom.dataObjects.PlayerInfo;
 import pom.pages.RegistrationFormPage;
+import pom.utils.JacksonUtils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,37 +15,16 @@ import java.util.List;
 
 public class TestFillOutBasketballTryRegistrationForm extends BaseTest {
 
-    @Test(dataProvider = "basketball_tryouts_registration")
-    public void testFillOutBasketballTryoutsForm(
-            String firstName,
-            String lastName,
-            String dateOfBirth,
-            String playerGradeLevel,
-            String numberOfSeasonsPlayed,
-            String positionsPlayed,
-            String positionsTryingOutFor,
-            String parentsFirstName,
-            String parentsLastName,
-            String parentsEmailAddress,
-            String parentsPhoneNumber,
-            String giveConsent
-    ) {
+  @Test(dataProvider = "basketball_tryouts_registration")
+    public void testFillOutBasketballTryoutsForm(PlayerInfo playerInfo) throws IOException {
         RegistrationFormPage registrationFormPage = new RegistrationFormPage(driver);
-        registrationFormPage.fillOutFormFields(firstName, lastName, dateOfBirth, playerGradeLevel,
-                numberOfSeasonsPlayed, positionsPlayed, positionsTryingOutFor, parentsFirstName, parentsLastName,
-                parentsEmailAddress, parentsPhoneNumber);
-                registrationFormPage.clickGiveConsent(giveConsent);
+        registrationFormPage.setPlayerInfo(playerInfo);
     }
 
-
-
     @DataProvider(name = "basketball_tryouts_registration")
-    public Object[][] load_test_data() {
+    public PlayerInfo[] load_test_data() throws IOException {
         // set up the data provider
-        return new Object[][] {
-                { "Cedric", "The Entertainer", "01/01/2009", "8th", "3", "Point Guard", "Small Forward", "Sue-Ellen", "Smith", "sue-ellen.smith@gmail.com", "305-777-6859", "Yes"},
-                { "Steve", "Harvey", "03/11/2013", "5th", "3", "Point Guard", "Small Forward", "Sue-Ellen", "Smith", "sue-ellen.smith@gmail.com", "305-777-6859", "Yes"},
-        };
+            return JacksonUtils.deserializeJson("PlayerData.json", PlayerInfo[].class);
     }
 
     @DataProvider(name = "basketball_tryouts_registration_from_csv_file")
@@ -53,7 +33,7 @@ public class TestFillOutBasketballTryRegistrationForm extends BaseTest {
         // feed csv data into data provider
         List<Object []> testCases = new ArrayList<>();
         String[] data= null;
-        String csvFile = "testdata/tcr_form_data_provider.csv";
+        String csvFile = "resources/tcr_form_data_provider.csv";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
