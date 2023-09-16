@@ -2,32 +2,28 @@ package base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import resources.properties.DriverManager;
+
+import java.util.Properties;
 
 public class BaseTest {
-    private static WebDriver driver;
-    protected static BasePage basePage;
-    private static final String baseURL = "https://www.techcoachingwithralph.com/basketball-tryouts-registration-form/";
-
-    @BeforeClass
-    public static void setupWebDriverManager() {
+    protected WebDriver driver;
+    @BeforeSuite
+    public void setupWebDriverManager() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeMethod
-    public static void setupTest() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get(baseURL);
-        basePage = new BasePage();
-        basePage.setDriver(driver);
+    public void setupTest() {
+        driver = new DriverManager().initializeDriver();
+        driver.get("https://www.techcoachingwithralph.com/basketball-tryouts-registration-form/");
     }
 
     @AfterMethod
-    public static void cleanUp() {
+    public void cleanUp() {
         driver.quit();
     }
 
