@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e626158b-6a76-4ea6-8fdb-84559d33dac0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techcoachralph/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techcoachralph/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/base/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/base/BasePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/base/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/base/BaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pom/pages/RegistrationFormPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pom/pages/RegistrationFormPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/TestFillOutBasketballTryRegistrationForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/TestFillOutBasketballTryRegistrationForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +55,20 @@
       <recent name="$PROJECT_DIR$/testdata" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="TestNG.TestFillOutBasketballTryRegistrationForm.testFillOutBasketballTryoutsForm">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.techcoachralph.Main" />
+      <module name="tcr_automate_form_with_dataprovider" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.techcoachralph.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestFillOutBasketballTryRegistrationForm.testFillOutBasketballTryoutsForm" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="tcr_automate_form_with_dataprovider" />
       <extension name="coverage">
@@ -78,6 +90,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.TestFillOutBasketballTryRegistrationForm.testFillOutBasketballTryoutsForm" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>

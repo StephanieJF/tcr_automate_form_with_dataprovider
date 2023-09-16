@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.*;
 import base.BaseTest;
 import pom.pages.RegistrationFormPage;
@@ -28,12 +29,11 @@ public class TestFillOutBasketballTryRegistrationForm extends BaseTest {
             String parentsPhoneNumber,
             String giveConsent
     ) {
-
         RegistrationFormPage registrationFormPage = new RegistrationFormPage(driver);
         registrationFormPage.fillOutFormFields(firstName, lastName, dateOfBirth, playerGradeLevel,
                 numberOfSeasonsPlayed, positionsPlayed, positionsTryingOutFor, parentsFirstName, parentsLastName,
                 parentsEmailAddress, parentsPhoneNumber);
-        registrationFormPage.clickGiveConsent(giveConsent);
+                registrationFormPage.clickGiveConsent(giveConsent);
     }
 
 
